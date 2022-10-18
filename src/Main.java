@@ -10,9 +10,10 @@ public class Main extends Application {
         primaryStage.setTitle("Hello world");
         Group root = new Group();
         Pane pane = new Pane(root);
-        Scene theScene = new Scene(pane, 600, 400,true);
+        GameScene theScene = new GameScene(pane, 600, 400,true);
         primaryStage.setScene(theScene);
         primaryStage.show();
+        System.out.println(theScene.cam1.toString());
     }
     public static void main(String[] args) {
         launch(args);
