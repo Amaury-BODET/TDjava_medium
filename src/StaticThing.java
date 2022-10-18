@@ -7,11 +7,14 @@ public class StaticThing {
     private Integer SizeY;
     private ImageView Background;
 
-    public StaticThing(Integer SizeX, Integer SizeY, String fileName, ImageView Background){
+    public StaticThing(Integer SizeX, Integer SizeY, String fileName){
         this.SizeX = SizeX;
         this.SizeY = SizeY;
         Image ImageBackground = new Image(fileName);
         this.Background = new ImageView(ImageBackground);
+    }
+    public ImageView getBackground(){
+        return Background;
     }
 
 }
