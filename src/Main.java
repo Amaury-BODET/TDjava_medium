@@ -13,7 +13,7 @@ public class Main extends Application {
         primaryStage.setTitle("Hello world");
         Group root = new Group();
         Pane pane = new Pane(root);
-        GameScene theScene = new GameScene(pane, 600, 400,true);
+        GameScene theScene = new GameScene(pane, 800, 400,true);
         Image spriteSheet = new Image("C:\\Users\\momob\\Documents\\ENSEA\\Java\\img\\heros.png");
         ImageView sprite = new ImageView(spriteSheet);
         sprite.setViewport(new Rectangle2D(20,0,65,100));
