@@ -1,10 +1,8 @@
-//import javafx.scene.image.Image;
-//import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class Hero {
-//    Image spriteSheet = new Image("..\\img\\heros.png");
-//    sprite = new ImageView(spriteSheet);
-//    sprite.setViewport(new Rectangle2D(20,0,65,100));
-//    sprite.setX(200);
-//    sprite.setY(300);
+public class Hero extends AnimatedThing {
+    public Hero(String filename, Integer x, Integer y, Integer state){
+        super(filename,x,y,state);
+    }
 }

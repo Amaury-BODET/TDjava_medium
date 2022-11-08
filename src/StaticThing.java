@@ -3,8 +3,8 @@ import javafx.scene.image.ImageView;
 
 
 public class StaticThing {
-    private Integer SizeX;
-    private Integer SizeY;
+    protected Integer SizeX;
+    protected Integer SizeY;
     private ImageView Background;
 
     public StaticThing(Integer SizeX, Integer SizeY, double X, double Y, String fileName){

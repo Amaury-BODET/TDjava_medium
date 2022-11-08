@@ -13,9 +13,16 @@ public class Camera {
     public Integer getY(){
         return this.Y;
     }
+    public double getWidthX(){
+        return this.X+200;
+    }
+    public double getWidthY() {
+        return this.Y+300;
+    }
 
     @Override
     public String toString(){
         return "[" + this.X + "," + this.Y + "]";
     }
+
 }
