@@ -1,3 +1,4 @@
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -13,15 +14,20 @@ public class Main extends Application {
         primaryStage.setTitle("Hello world");
         Group root = new Group();
         Pane pane = new Pane(root);
-        GameScene theScene = new GameScene(pane, 800, 400,true);
-        Image spriteSheet = new Image("heros.png");
-        ImageView sprite = new ImageView(spriteSheet);
-        sprite.setViewport(new Rectangle2D(20,0,65,100));
-        sprite.setX(200);
-        sprite.setY(300);
+        GameScene theScene = new GameScene(pane, 1200, 400,true);
         primaryStage.setScene(theScene);
         primaryStage.show();
         System.out.println(theScene.cam.toString());
+        theScene.render(theScene.cam);
+        AnimationTimer timer = new AnimationTimer() {
+            public void handle(long time) {
+                theScene.character.update(time);
+                theScene.cam.update(time);
+                theScene.update(time);
+                System.out.println(time);
+            }
+        };
+            timer.start();
     }
     public static void main(String[] args) {
         launch(args);

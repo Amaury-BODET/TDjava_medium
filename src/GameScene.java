@@ -1,3 +1,4 @@
+import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -7,25 +8,39 @@ import javafx.scene.layout.Pane;
 
 public class GameScene extends Scene {
     protected Pane pane;
-    public Camera cam ;
+    protected static Camera cam ;
     private StaticThing stRight;
     private StaticThing stLeft;
     private StaticThing numberOfLives;
-    private Hero charactere;
+    protected Hero character;
+    AnimationTimer timer;
 
-    public GameScene(Pane pane, double v, double v1, boolean b) {
-        super(pane, v, v1, b);
-        cam = new Camera(900,50,600,400);
+    public void update (long time){
+        if (AnimatedThing.countFrame == AnimatedThing.maxFrame) {
+            cam.setX(cam.getX()+20);
+            this.render(cam);
+
+            AnimatedThing.countFrame = 0;
+        }
+        else {
+            AnimatedThing.countFrame+=1;
+        }
+    }
+
+    public GameScene(Pane Parentpane, double v, double v1, boolean b) {
+        super(Parentpane, v, v1, b);
+        pane = Parentpane;
+        cam = new Camera(200,50,600,400);
         stRight = new StaticThing(800,400, 799,0,"desert.png",0);
         stLeft = new StaticThing(800,400,0,0,"desert.png",0);
         numberOfLives = new StaticThing(900, 200, 20, 20, "lives.png", 3);
-        charactere = new Hero("heros.png",200,150,0);
-        pane.getChildren().add(stRight.getBackground());
-        pane.getChildren().add(stLeft.getBackground());
-        pane.getChildren().add(numberOfLives.getBackground());
-        pane.getChildren().add(charactere.getSprite());
-        pane.getChildren().get(3).setScaleX(0.15);
-        pane.getChildren().get(3).setScaleY(0.15);
+        character = new Hero("heros.png",200,150,0);
+        Parentpane.getChildren().add(stRight.getBackground());
+        Parentpane.getChildren().add(stLeft.getBackground());
+        Parentpane.getChildren().add(numberOfLives.getBackground());
+        Parentpane.getChildren().add(character.getSprite());
+        Parentpane.getChildren().get(3).setScaleX(0.15);
+        Parentpane.getChildren().get(3).setScaleY(0.15);
     }
     public void render (Camera cam){
         ((ImageView) pane.getChildren().get(1)).setViewport(new Rectangle2D(cam.getX(),cam.getY(),cam.getWidthX(),cam.getWidthY()));
