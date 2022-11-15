@@ -1,10 +1,14 @@
 public class Camera {
     private Integer X;
     private Integer Y;
+    private Integer WidthX;
+    private Integer WidthY;
 
-    public Camera(Integer X, Integer Y){
+    public Camera(Integer X, Integer Y, Integer WidthX, Integer WidthY){
         this.X=X;
         this.Y=Y;
+        this.WidthX=WidthX;
+        this.WidthY=WidthY;
     }
 
     public Integer getX(){
