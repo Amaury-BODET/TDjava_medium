@@ -8,6 +8,7 @@ public class Camera {
     private double position;
 
     private double deltaT;
+    private double saveTime;
 
     private double deltaVx;
 
@@ -24,35 +25,36 @@ public class Camera {
         this.Y=Y;
         this.WidthX=WidthX;
         this.WidthY=WidthY;
+        saveTime = System.nanoTime();
         deltaVx = 0;
         deltaX = 0;
-        deltaT = 0.00001;
+        deltaT = 0.0016;
         k =1;
         m=1;
         f =1.2;
-        acceleration = 0;
+        acceleration = -300;
         vitesse = 0;
     }
     public void update(long time) {
+        this.deltaT = ((time - saveTime)*1e-9); //nanosecond -> second
         this.acceleration = (k/m)*(AnimatedThing.sprite.getX()-X)+(f/m)*vitesse;
         this.deltaVx = acceleration*deltaT;
         this.deltaX = vitesse*deltaT;
         this.vitesse = vitesse+deltaVx;
         this.X = X+deltaX;
-        System.out.println(X);
+        System.out.println("X="+X+" ;Xhero= "+AnimatedThing.sprite.getX()+" ;DeltaT= "+deltaT+"; "+time);
+        saveTime = time;
     }
     public double getX(){
-        return this.X;
+        return X;
     }
     public double getY(){
-        return this.Y;
+        return Y;
     }
     public double getWidthX(){
-        return this.X+200;
+        return WidthX;
     }
-    public double getWidthY() {
-        return this.Y+300;
-    }
+    public double getWidthY() { return WidthY; }
     public void setX(double x){ X = x; }
     @Override
     public String toString(){

@@ -27,7 +27,7 @@ public class Main extends Application {
                 System.out.println(time);
             }
         };
-            timer.start();
+        timer.start();
     }
     public static void main(String[] args) {
         launch(args);

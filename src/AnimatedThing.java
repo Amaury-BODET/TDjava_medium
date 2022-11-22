@@ -14,6 +14,8 @@ public abstract class AnimatedThing {
     protected static Integer maxFrame;
     protected static Integer offsetFrame;
 
+    protected static long durationFrames;
+
     protected Integer sizeWindow;
     protected static Integer index;
     protected static Integer maxIndex;
@@ -22,6 +24,7 @@ public abstract class AnimatedThing {
     public AnimatedThing (String filename, Integer x, Integer y, Integer state) {
         countFrame = 4;
         maxFrame = 4;
+        durationFrames = 41666666;
         offsetFrame = 85;
         state = 0;
         maxIndex = 5;

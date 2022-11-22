@@ -17,7 +17,7 @@ public class GameScene extends Scene {
 
     public void update (long time){
         if (AnimatedThing.countFrame == AnimatedThing.maxFrame) {
-            cam.setX(cam.getX()+20);
+            //cam.setX(cam.getX()+20);
             this.render(cam);
 
             AnimatedThing.countFrame = 0;
@@ -30,11 +30,11 @@ public class GameScene extends Scene {
     public GameScene(Pane Parentpane, double v, double v1, boolean b) {
         super(Parentpane, v, v1, b);
         pane = Parentpane;
-        cam = new Camera(200,50,600,400);
+        cam = new Camera(400,50,600,400);
         stRight = new StaticThing(800,400, 799,0,"desert.png",0);
         stLeft = new StaticThing(800,400,0,0,"desert.png",0);
         numberOfLives = new StaticThing(900, 200, 20, 20, "lives.png", 3);
-        character = new Hero("heros.png",200,150,0);
+        character = new Hero("heros.png",200,200,0);
         Parentpane.getChildren().add(stRight.getBackground());
         Parentpane.getChildren().add(stLeft.getBackground());
         Parentpane.getChildren().add(numberOfLives.getBackground());
@@ -51,8 +51,16 @@ public class GameScene extends Scene {
             ((ImageView) pane.getChildren().get(2)).setVisible(true);
         }
         if (cam.getX()>=stLeft.SizeX){
-            ((ImageView) pane.getChildren().get(2)).setX(cam.getX()- stLeft.SizeX);
+            cam.setX(cam.getX()- stLeft.SizeX);
         }
+
+        //if((Character.getSprite().getX()+85)<cam.getX()){
+        //    ((ImageView) pane.getChildren().get(4)).setVisible(false);
+        //}
+        //else {
+        //    ((ImageView) pane.getChildren().get(4)).setVisible(true);
+        //}
+
         if (numberOfLives.value==3){
             stLeft.getBackground().setViewport(new Rectangle2D(100, 5, 755, 200));
             ((ImageView) pane.getChildren().get(3)).setX(-300);
@@ -76,25 +84,3 @@ public class GameScene extends Scene {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
